@@ -21,3 +21,9 @@ with col2:
     st.write(content)
 
 # col4, col5, col6 = st.columns(3, border=True)
+
+content2 = """
+Below you can find some of the apps I have built. Feel free to contact me!
+"""
+
+st.write(content2)
