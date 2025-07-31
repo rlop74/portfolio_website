@@ -1,4 +1,5 @@
 import streamlit as st
+import pandas as pd
 
 st.set_page_config(layout="wide")
 
@@ -27,3 +28,22 @@ Below you can find some of the apps I have built. Feel free to contact me!
 """
 
 st.write(content2)
+
+col3, empty_col, col4 = st.columns([1.5, 0.5, 1.5])
+
+# Get data from data.csv
+csvfile = pd.read_csv("data.csv", delimiter=";")
+
+with col3:
+    for index, row in csvfile[:10].iterrows():
+        st.header(row["title"])
+        st.write(row["description"])
+        st.image(f"images/{row['image']}")
+        st.page_link(row['url'], label="Source Code")
+
+with col4:
+    for index, row in csvfile[10:].iterrows():
+        st.header(row["title"])
+        st.write(row["description"])
+        st.image(f"images/{row['image']}")
+        st.page_link(row["url"], label="Source Code")
